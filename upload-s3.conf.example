@@ -1,0 +1,11 @@
+# S3 endpoint configuration
+endpoint = https://s3.your-self-hosted-domain.com
+access-key-id = YOUR_ACCESS_KEY
+access-key-secret = YOUR_SECRET_KEY
+bucket = your-bucket
+region = us-east-1
+
+# Optional filters
+# preset = image
+# include = *.jpg
+# exclude = tmp/*
