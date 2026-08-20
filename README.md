@@ -11,6 +11,7 @@ chmod +x upload-s3.sh;
 chmod +x fetch-s3.sh;
 chmod +x llm-launch.sh;
 chmod +x run-acme-cf.sh;
+chmod +x start-tmux-windows.sh;
 ```
 
 Copy `upload-s3.conf` and fill in your S3-compatible endpoint, access key, secret key, bucket, and region.
@@ -35,6 +36,8 @@ DOMAINS=("example.com" "*.example.com");
 CERT_HOME="${HOME}/.acme.sh";
 ```
 
+`start-tmux-windows.sh` expects `tmux` to be installed locally.
+
 ## Features
 
 - Sync a local directory to an S3-compatible bucket.
@@ -47,6 +50,7 @@ CERT_HOME="${HOME}/.acme.sh";
 - Generate presigned URLs for full object keys.
 - Launch `llama-server` with model aliases, computed context size, concurrency, and optional multimodal settings.
 - Issue and install Cloudflare DNS certificates for one or more configured domains.
+- Start a tmux session with named windows and optional side-by-side panes from a command file.
 
 ## Usage
 
@@ -131,6 +135,27 @@ Generate a presigned URL for a full object key:
 ```bash
 ./fetch-s3.sh url --config upload-s3.conf --key assets/example.jpg --expires-in 3600;
 ```
+
+### start-tmux-windows
+
+Starts a tmux session from a command file. Each non-comment line creates one window, an optional `[Window Name]` prefix sets the display name, and ` ::: ` splits multiple commands into side-by-side panes.
+
+Example command file:
+
+```text
+# System dashboard
+[glances] glances
+[logs] tail -f /var/log/system.log ::: htop
+[shell]
+```
+
+Start the tmux session:
+
+```bash
+./start-tmux-windows.sh start-tmux-windows.conf.example;
+```
+
+The generated session name is based on the command file name. If that session already exists, the script replaces it before attaching.
 
 ### llm-launch
 
