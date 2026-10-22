@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Set WAN_NETDEV to the egress netdev
+WAN_NETDEV="wan0"
+
+if [[ "${IFACE}" == "${WAN_NETDEV}" ]]; then
+  cloudflare-ddns.sh --env-file /etc/cloudflare-ddns/config
+fi

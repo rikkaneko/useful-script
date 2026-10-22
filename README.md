@@ -215,6 +215,18 @@ example.com/fullchain.pem
 example.com/privkey.pem
 ```
 
+### cloudflare-ddns
+
+Dynamically update the DNS entries under Cloudflare.
+
+Usage:
+
+```bash
+cloudflare-ddns.sh --env-file /path/to/env/file
+```
+
+To update DNS on public IP changes, install `networkd-dispatcher`, then copy `cloudflare-ddns-hook` to `/etc/networkd-dispatcher/configured.d`
+
 ## License
 
-No license has been specified.
+GPLv3
