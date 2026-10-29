@@ -227,6 +227,16 @@ cloudflare-ddns.sh --env-file /path/to/env/file
 
 To update DNS on public IP changes, install `networkd-dispatcher`, then copy `cloudflare-ddns-hook` to `/etc/networkd-dispatcher/configured.d`
 
+### update-git-commit-author
+
+Replace the author and sign off message in all git commit
+
+Usage:
+
+```bash
+update-git-commit-author old@exmaple.com new-username new@exmaple.com
+```
+
 ## License
 
 GPLv3
