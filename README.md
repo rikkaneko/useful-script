@@ -112,11 +112,13 @@ Generate a presigned URL for a full object key
 
 ## start-tmux-windows
 
-Starts a tmux session from a command file. Each non-comment line creates one window, an optional `[Window Name]` prefix sets the display name, and ` ::: ` splits multiple commands into side-by-side panes.
+Starts a tmux session from a command file.
 
 ### Configuration
 
 Use the provided `start-tmux-windows.conf.example` as reference. 
+
+Each non-comment line creates one window, the format is `[Window Name] <cmd1> [::: <cmd2>]?*` where `:::` splits multiple commands into side-by-side panes.
 
 ```text
 # System dashboard
@@ -236,7 +238,19 @@ Replace the author and sign off message in all git commit
 Basic Usage
 
 ```bash
-update-git-commit-author old@exmaple.com new-username new@exmaple.com
+update-git-commit-author.sh old@exmaple.com new-username new@exmaple.com
+```
+
+## fail2ban-from-log
+
+Scan and ban malicious IPs from old logs file
+
+### Usage
+
+Basic Usage
+
+```bash
+fail2ban-from-log.sh nginx.log nginx-nonhttp nginx-banip
 ```
 
 ## License
